@@ -12,10 +12,10 @@ class RastreamentoController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $frete = Frete::get();
+        $frete = Frete::where('codigo_rastreio', 'TESTE123')->first();
 
-        dd($frete);
-
-        return view('fretes.rastreamento');
+        return view('fretes.rastreamento', [
+            'frete' => $frete
+        ]);
     }
 }
