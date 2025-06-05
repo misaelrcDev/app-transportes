@@ -9,12 +9,12 @@
             </p>
             <p class="mt-2">
                 Status:
-                <span class="px-3 py-1 rounded-full">
+                <span class="px-2 py-1  {{ $frete->status->pegarCorEtiqueta() }} rounded-full">
                     {{ $frete->status }}
                 </span>
             </p>
             <p class="mt-2">
-                Destino: <span class="font-semibold">{{ $frete->destinho }}</span>
+                Destino: <span class="font-semibold">{{ $frete->destino }}</span>
             </p>
         </div>
 

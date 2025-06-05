@@ -2,17 +2,14 @@
 
 namespace App\Models;
 
+use App\Enums\FreteStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Frete extends Model
 {
-    protected $fillable = [
-        'codigo_rastreio',
-        'descricao',
-        'data_envio',
-        'data_entrega',
-        'status'
+    protected $casts = [
+        'status' => FreteStatus::class
     ];
 
     public function etapas(): HasMany

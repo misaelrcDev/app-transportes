@@ -19,9 +19,9 @@
                             <h2 class="text-xl font-semibold text-gray-900">
                                 Histórico de encomendas do Cliente
                             </h2>
-                            <form action="#" method="GET">
+                            <form action="{{ route('frete.historico') }}" method="GET">
                                 <div class="relative w-full max-w-md">
-                                    <input type="tel" name="telefone" placeholder="Número de telefone" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" oninput="aplicarMascaraTelefone(this)" maxlength="15">
+                                    <input type="tel" name="telefone" oninput="aplicarMascaraTelefone(this)" placeholder="Número de telefone" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" oninput="aplicarMascaraTelefone(this)" maxlength="15">
                                     <button type="submit" class="absolute inset-y-0 right-0 px-4 py-2 text-white bg-indigo-500 rounded-r-md hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">Consultar</button>
                                 </div>
                             </form>
@@ -33,5 +33,21 @@
                     <img src="/entrega.webp" alt="Placeholder" class="object-cover w-full h-full">
                 </div>
     </div>
+
+    <script>
+        aplicarMascaraTelefone = function (input) {
+            let value = input.value.replace(/\D/g, ''); // Remove tudo que não é dígito
+            if (value.length > 10) {
+                value = value.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3'); // Formato (XX) XXXXX-XXXX
+            } else if (value.length > 5) {
+                value = value.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3'); // Formato (XX) XXXX-XXXX
+            } else if (value.length > 2) {
+                value = value.replace(/(\d{2})(\d{0,5})/, '($1) $2'); // Formato (XX) XXXXX
+            } else {
+                value = value.replace(/(\d+)/, '($1'); // Formato (XX
+            }
+            input.value = value;
+        }
+    </script>
 
 </x-layout>
