@@ -43,7 +43,7 @@
                         {{ $frete->origem }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ $frete->destino }}
+                        {{ $frete->destinho }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
                         <span class="px-2 py-1 {{ $frete->status->pegarCorEtiqueta() }} rounded-full">
@@ -91,7 +91,7 @@
                         {{ $frete->origem }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ $frete->destino }}
+                        {{ $frete->destinho }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
                         <span class="px-2 py-1  {{ $frete->status->pegarCorEtiqueta() }} rounded-full">
