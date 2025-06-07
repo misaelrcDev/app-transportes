@@ -2,9 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreClienteRequest;
+use App\Models\Cliente;
 
 class ClienteController extends Controller
 {
-    //
+    public function store(StoreClienteRequest $request)
+    {
+       $cliente = Cliente::create($request->validated());
+
+        return $cliente;
+    }
 }
