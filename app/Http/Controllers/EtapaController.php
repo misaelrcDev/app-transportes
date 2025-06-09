@@ -2,14 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\FreteStatus;
 use App\Http\Requests\StoreEtapaRequest;
 use App\Models\Etapa;
+use App\Models\Frete;
+use Illuminate\Http\JsonResponse;
 
 class EtapaController extends Controller
 {
-    public funCtion store(StoreEtapaRequest $request)
+    public function store(StoreEtapaRequest $request): JsonResponse | Etapa
     {
-        $etapa = Etapa::create($request->validated());
+
+        $frete = Frete::find($request->frete_id);
+
+        if ($frete->status == FreteStatus::ENTREGUE) {
+            return response()->json([
+                'message' => 'Não é possível adicionar etapas a um frete já entregue.'
+            ], 400);
+        }
+
+        $etapa = Etapa::create($request->all());
+
+        $tipoFreteStatus = FreteStatus::fromName($request->tipo_etapa);
+        $frete->update(['status' => $tipoFreteStatus]);
 
         return $etapa;
     }
