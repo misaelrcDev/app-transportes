@@ -17,6 +17,6 @@ class CreateFrete extends CreateRecord
         $data['codigo_rastreio'] = Helpers::geraCodigoRastreioUnico();
         $data['status'] = FreteStatus::EM_TRANSITO;
 
-        return $data;
+        return $data; 
     }
 }

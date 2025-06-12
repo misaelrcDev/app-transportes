@@ -3,7 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\FreteResource\Pages;
-use App\Filament\Resources\FreteResource\RelationManagers;
+use App\Filament\Resources\FreteResource\RelationManagers\EtapasRelationManager;
 use App\Models\Frete;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -99,7 +99,7 @@ class FreteResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            EtapasRelationManager::class,
         ];
     }
 
